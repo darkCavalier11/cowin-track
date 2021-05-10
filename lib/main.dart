@@ -23,9 +23,6 @@ class MyApp extends StatelessWidget {
           fontFamily: 'JosefinSans',
         ),
         home: MyHomePage(),
-        routes: {
-          GMap.routeName: (ctx) => GMap(),
-        },
       ),
     );
   }
