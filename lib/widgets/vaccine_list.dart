@@ -1,7 +1,12 @@
+import 'package:cowin/provider/vaccine.dart';
 import 'package:cowin/screens/gmap.dart';
 import 'package:flutter/material.dart';
 
 class VaccineList extends StatelessWidget {
+  final Vaccine location;
+  
+  VaccineList(this.location);
+
   @override
   Widget build(BuildContext context) {
     return Container(

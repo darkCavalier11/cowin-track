@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
 class Vaccine {
   String centerId;
   String name;
@@ -37,5 +40,18 @@ class Vaccine {
     minAgeLimit = json['sessions']['min_age_limit'];
     vaccine = json['sessions']['vaccine'];
     slots = json['sessions']['slots'];
+  }
+}
+
+class VaccineProvider with ChangeNotifier {
+  List<Vaccine> locations = [];
+
+  void updateLocation(List<Vaccine> newLocations) {
+    locations = newLocations;
+    notifyListeners();
+  }
+
+  List<Vaccine> get fetchLocation {
+    return [...locations];
   }
 }

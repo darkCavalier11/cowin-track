@@ -1,14 +1,14 @@
+import 'package:cowin/provider/vaccine.dart';
+import 'package:cowin/widgets/no_vaccine.dart';
 import 'package:cowin/widgets/vaccine_list.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class VaccineStatus extends StatefulWidget {
-  @override
-  _VaccineStatusState createState() => _VaccineStatusState();
-}
-
-class _VaccineStatusState extends State<VaccineStatus> {
+class VaccineStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final List<Vaccine> locations =
+        Provider.of<VaccineProvider>(context).locations;
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -18,14 +18,16 @@ class _VaccineStatusState extends State<VaccineStatus> {
           topRight: Radius.circular(30),
         ),
       ),
-      child: ListView.builder(
-        itemBuilder: (ctx, i) => Container(
-          child: ListTile(
-            title: VaccineList(),
-          ),
-        ),
-        itemCount: 5,
-      ),
+      child: locations.isEmpty
+          ? NoVaccine()
+          : ListView.builder(
+              itemBuilder: (ctx, i) => Container(
+                child: ListTile(
+                  title: VaccineList(locations[i]),
+                ),
+              ),
+              itemCount: locations.length,
+            ),
     );
   }
 }

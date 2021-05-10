@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cowin/provider/vaccine.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart';
@@ -10,9 +11,9 @@ class DateScroll extends StatefulWidget {
 }
 
 class _DateScrollState extends State<DateScroll> {
-  final Client _client = Client();
   @override
   List<DateTime> _dates = [];
+  List<Vaccine> _locations = [];
   final List<bool> _isActive = [];
   void initState() {
     for (var i = 0; i < 10; i++) {
@@ -24,6 +25,7 @@ class _DateScrollState extends State<DateScroll> {
       _isActive.add(false);
     }
     _isActive[0] = true;
+
     super.initState();
   }
 
