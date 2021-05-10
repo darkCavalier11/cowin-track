@@ -4,6 +4,7 @@ import 'package:cowin/provider/vaccine.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart';
+import 'package:provider/provider.dart';
 
 class DateScroll extends StatefulWidget {
   @override
@@ -25,7 +26,6 @@ class _DateScrollState extends State<DateScroll> {
       _isActive.add(false);
     }
     _isActive[0] = true;
-
     super.initState();
   }
 
