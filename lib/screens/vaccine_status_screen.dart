@@ -1,4 +1,4 @@
-import 'package:cowin/vaccine_list.dart';
+import 'package:cowin/widgets/vaccine_list.dart';
 import 'package:flutter/material.dart';
 
 class VaccineStatus extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:cowin/date.dart';
-import 'package:cowin/vaccine_status.dart';
+import 'package:cowin/widgets/date.dart';
+import 'package:cowin/screens/vaccine_status_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
