@@ -26,17 +26,18 @@ class _DateScrollState extends State<DateScroll> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: 6,
-        vertical: 0,
-      ),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (ctx, i) => Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
             color: _isActive[i] ? Colors.white : null,
-            borderRadius: _isActive[i] ? BorderRadius.circular(30) : null,
+            borderRadius: _isActive[i]
+                ? BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  )
+                : null,
           ),
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
           child: GestureDetector(

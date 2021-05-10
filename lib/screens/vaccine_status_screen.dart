@@ -11,12 +11,7 @@ class _VaccineStatusState extends State<VaccineStatus> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.only(top: 10),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(25),
-          topRight: Radius.circular(25),
-        ),
         color: Colors.white,
       ),
       child: ListView.builder(
