@@ -1,4 +1,4 @@
-import 'package:cowin/widgets/date.dart';
+import 'package:cowin/widgets/date_scroll.dart';
 import 'package:cowin/screens/vaccine_status_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +78,7 @@ class MyHomePage extends StatelessWidget {
           ),
           Container(
             height: 50,
+            margin: EdgeInsets.only(top: 10),
             child: DateScroll(),
           ),
           Expanded(
