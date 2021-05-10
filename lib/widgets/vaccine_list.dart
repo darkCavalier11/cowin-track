@@ -1,10 +1,11 @@
 import 'package:cowin/provider/vaccine.dart';
 import 'package:cowin/screens/gmap.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class VaccineList extends StatelessWidget {
   final Vaccine location;
-  
+
   VaccineList(this.location);
 
   @override
@@ -28,9 +29,9 @@ class VaccineList extends StatelessWidget {
               title: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Debabhuin'),
-                  Text('Narsinghpur'),
-                  Text('Cuttack, Odisha'),
+                  Text(location.name),
+                  Text(location.blockName),
+                  Text('${location.districtName}, ${location.stateName}'),
                 ],
               ),
               trailing: IconButton(
@@ -53,28 +54,29 @@ class VaccineList extends StatelessWidget {
             children: [
               Chip(
                 backgroundColor: Colors.greenAccent,
-                label: Text('Free'),
+                label: Text(location.feeType),
               ),
               SizedBox(
                 width: 15,
               ),
               Chip(
                 backgroundColor: Colors.greenAccent,
-                label: Text('Covishield'),
+                label: Text(location.vaccine),
               ),
               SizedBox(
                 width: 15,
               ),
               Chip(
                 backgroundColor: Colors.greenAccent,
-                label: Text('45+'),
+                label: Text(location.minAgeLimit.toString() + '+'),
               ),
               Spacer(),
               OutlineButton(
                 onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    GMap.routeName,
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => GMap(location.lat, location.long),
+                    ),
                   );
                 },
                 child: Text('Map'),
@@ -92,14 +94,14 @@ class VaccineList extends StatelessWidget {
                 children: [
                   Chip(
                     avatar: Icon(Icons.access_alarm),
-                    label: Text("08:00AM - 10:00AM"),
+                    label: Text(location.slots[i]),
                   ),
                   SizedBox(
                     width: 15,
                   )
                 ],
               ),
-              itemCount: 4,
+              itemCount: location.slots.length,
             ),
           )
         ],
