@@ -4,10 +4,9 @@ class VaccineList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 230,
-      alignment: Alignment.center,
       decoration: BoxDecoration(),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Divider(),
           SizedBox(
@@ -16,11 +15,12 @@ class VaccineList extends StatelessWidget {
           Container(
             height: 80,
             child: ListTile(
-              leading: FittedBox(
-                fit: BoxFit.cover,
-                child: Image.asset('assets/images/vaccine.png'),
+              leading: Image.asset(
+                'assets/images/vaccine.png',
+                height: 60,
               ),
               title: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text('Debabhuin'),
                   Text('Narsinghpur'),
