@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart';
 
 class DateScroll extends StatefulWidget {
   @override
@@ -7,8 +10,9 @@ class DateScroll extends StatefulWidget {
 }
 
 class _DateScrollState extends State<DateScroll> {
+  final Client _client = Client();
   @override
-  final List<DateTime> _dates = [];
+  List<DateTime> _dates = [];
   final List<bool> _isActive = [];
   void initState() {
     for (var i = 0; i < 10; i++) {
@@ -42,7 +46,11 @@ class _DateScrollState extends State<DateScroll> {
           ),
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
           child: GestureDetector(
-            onTap: () {
+            onTap: () async {
+              final res = await read(
+                  'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=754032&date=09-05-2021');
+              final data = jsonDecode(res);
+              print(data['centers'].length);
               setState(
                 () {
                   _isActive.fillRange(0, _isActive.length, false);
