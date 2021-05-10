@@ -1,6 +1,8 @@
+import 'package:cowin/provider/vaccine.dart';
 import 'package:cowin/widgets/date_scroll.dart';
 import 'package:cowin/widgets/vaccine_status_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -77,7 +79,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 child: FlatButton(
                   onPressed: () {
-                    print(_pinFieldController.text);
+                    Provider.of<VaccineProvider>(context, listen: false).init(
+                      DateTime.now(),
+                      int.parse(_pinFieldController.text),
+                    );
                   },
                   child: Text(
                     'Search',
