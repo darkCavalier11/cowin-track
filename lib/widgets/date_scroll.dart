@@ -26,6 +26,7 @@ class _DateScrollState extends State<DateScroll> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(left: 27, right: 27),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (ctx, i) => Container(

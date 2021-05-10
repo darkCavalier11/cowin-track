@@ -1,3 +1,4 @@
+import 'package:cowin/screens/gmap.dart';
 import 'package:flutter/material.dart';
 
 class VaccineList extends StatelessWidget {
@@ -62,6 +63,16 @@ class VaccineList extends StatelessWidget {
               Chip(
                 backgroundColor: Colors.greenAccent,
                 label: Text('45+'),
+              ),
+              Spacer(),
+              OutlineButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    GMap.routeName,
+                  );
+                },
+                child: Text('Map'),
               )
             ],
           ),

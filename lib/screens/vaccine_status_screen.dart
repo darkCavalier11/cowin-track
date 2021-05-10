@@ -13,6 +13,10 @@ class _VaccineStatusState extends State<VaccineStatus> {
       width: double.infinity,
       decoration: BoxDecoration(
         color: Colors.white,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
       ),
       child: ListView.builder(
         itemBuilder: (ctx, i) => Container(
