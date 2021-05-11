@@ -1,3 +1,4 @@
+import 'package:cowin/provider/current_state.dart';
 import 'package:cowin/provider/vaccine.dart';
 import 'package:cowin/screens/gmap.dart';
 import 'package:cowin/screens/my_home_page.dart';
@@ -14,8 +15,11 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) => VaccineProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (ctx) => VaccineProvider()),
+        ChangeNotifierProvider(create: (ctx) => CurrentStateProvider()),
+      ],
       child: MaterialApp(
         title: 'Cowin tracker',
         theme: ThemeData(
