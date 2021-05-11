@@ -8,8 +8,8 @@ class VaccineStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Vaccine> locations =
-        Provider.of<VaccineProvider>(context).locations;
-    print(locations);
+        Provider.of<VaccineProvider>(context).fetchLocation;
+    
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(

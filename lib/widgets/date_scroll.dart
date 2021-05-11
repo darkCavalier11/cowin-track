@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cowin/provider/current_state.dart';
 import 'package:cowin/provider/vaccine.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -49,16 +50,16 @@ class _DateScrollState extends State<DateScroll> {
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 0),
           child: GestureDetector(
             onTap: () async {
-              final res = await read(
-                  'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=754032&date=09-05-2021');
-              final data = jsonDecode(res);
-              print(data['centers'].length);
               setState(
                 () {
                   _isActive.fillRange(0, _isActive.length, false);
                   _isActive[i] = true;
                 },
               );
+              final pincode =
+                  Provider.of<CurrentStateProvider>(context, listen: false).pin;
+              final dateTime = _dates[i];
+              Provider.of<VaccineProvider>(context, listen: false).init(dateTime, pincode);
             },
             child: Text(
               DateFormat.yMEd().format(_dates[i]),

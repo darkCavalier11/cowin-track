@@ -64,12 +64,11 @@ class VaccineProvider with ChangeNotifier {
     final res = await read(url);
     final data = jsonDecode(res)['centers'];
     locations.clear();
+    print(data);
     if (data.length == 0) {
       notifyListeners();
       return;
     }
-    print(data[0]['sessions'][0]['date']);
-
     for (var i = 0; i < data.length; i++) {
       final String dateAvailable = data[i]['sessions'][0]['date'];
       // if (int.parse(dateAvailable[0] + dateAvailable[1]) != day) {

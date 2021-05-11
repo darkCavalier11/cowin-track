@@ -1,3 +1,4 @@
+import 'package:cowin/provider/current_state.dart';
 import 'package:cowin/provider/vaccine.dart';
 import 'package:cowin/widgets/date_scroll.dart';
 import 'package:cowin/widgets/vaccine_status_screen.dart';
@@ -81,6 +82,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () {
                     Provider.of<VaccineProvider>(context, listen: false).init(
                       DateTime.now(),
+                      int.parse(_pinFieldController.text),
+                    );
+                    Provider.of<CurrentStateProvider>(context, listen: false)
+                        .setPincode(
                       int.parse(_pinFieldController.text),
                     );
                   },
