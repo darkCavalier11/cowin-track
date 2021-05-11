@@ -62,10 +62,10 @@ class VaccineProvider with ChangeNotifier {
         'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=$pincode&date=$day-$month-$year';
 
     final res = await read(url);
-    this.setLocation(res);
+    this.setLocation(res, date);
   }
 
-  void setLocation(dynamic res) {
+  void setLocation(dynamic res, DateTime date) {
     final data = jsonDecode(res)['centers'];
     locations.clear();
     print(data);
@@ -75,10 +75,11 @@ class VaccineProvider with ChangeNotifier {
     }
     for (var i = 0; i < data.length; i++) {
       final String dateAvailable = data[i]['sessions'][0]['date'];
-      // if (int.parse(dateAvailable[0] + dateAvailable[1]) != day) {
-      //   continue;
-      // }
-      locations.add(Vaccine.fromJson(data[i]));
+      if (int.parse(dateAvailable[0] + dateAvailable[1]) == date.day) {
+        // if (int.parse(dateAvailable[i][0] + dateAvailable[i][1]) != date.day)
+        //   continue;
+        locations.add(Vaccine.fromJson(data[i]));
+      }
     }
     notifyListeners();
   }
