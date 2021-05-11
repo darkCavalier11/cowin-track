@@ -70,7 +70,7 @@ class _DateScrollState extends State<DateScroll> {
               final res = await read(url);
 
               Provider.of<VaccineProvider>(context, listen: false)
-                  .setLocation(res);
+                  .setLocation(res, _dates[i]);
               Provider.of<CurrentStateProvider>(context, listen: false)
                   .toggleLoading();
             },

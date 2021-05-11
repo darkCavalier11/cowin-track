@@ -20,7 +20,6 @@ class VaccineList extends StatelessWidget {
             height: 10,
           ),
           Container(
-            height: 80,
             child: ListTile(
               leading: Image.asset(
                 'assets/images/vaccine.png',
@@ -28,9 +27,12 @@ class VaccineList extends StatelessWidget {
               ),
               title: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(location.name),
-                  Text(location.blockName),
+                  Text(location.blockName == 'Not Applicable'
+                      ? location.address
+                      : location.blockName),
                   Text('${location.districtName}, ${location.stateName}'),
                 ],
               ),
