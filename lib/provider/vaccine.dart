@@ -62,6 +62,10 @@ class VaccineProvider with ChangeNotifier {
         'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=$pincode&date=$day-$month-$year';
 
     final res = await read(url);
+    this.setLocation(res);
+  }
+
+  void setLocation(dynamic res) {
     final data = jsonDecode(res)['centers'];
     locations.clear();
     print(data);

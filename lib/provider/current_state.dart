@@ -33,4 +33,8 @@ class CurrentStateProvider with ChangeNotifier {
   int get pin {
     return currentState.pin;
   }
+
+  bool get loadingStatus {
+    return currentState.isLoading;
+  }
 }

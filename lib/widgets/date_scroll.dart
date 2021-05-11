@@ -59,7 +59,20 @@ class _DateScrollState extends State<DateScroll> {
               final pincode =
                   Provider.of<CurrentStateProvider>(context, listen: false).pin;
               final dateTime = _dates[i];
-              Provider.of<VaccineProvider>(context, listen: false).init(dateTime, pincode);
+              int day = dateTime.day;
+              int month = dateTime.month;
+              int year = dateTime.year;
+              Provider.of<CurrentStateProvider>(context, listen: false)
+                  .toggleLoading();
+              final String url =
+                  'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=$pincode&date=$day-$month-$year';
+
+              final res = await read(url);
+
+              Provider.of<VaccineProvider>(context, listen: false)
+                  .setLocation(res);
+              Provider.of<CurrentStateProvider>(context, listen: false)
+                  .toggleLoading();
             },
             child: Text(
               DateFormat.yMEd().format(_dates[i]),
